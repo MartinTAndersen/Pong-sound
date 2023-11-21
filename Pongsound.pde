@@ -1,11 +1,20 @@
-import processing.sound.*;
+import processing.sound.*; //<>//
 SoundFile music;
 
 void setup() {
   size(1000, 800);
-  music = new SoundFile(this,"Pong.mp3");
- 
+
+  try {
+    music = new SoundFile(this, "C:\Users\Chris\OneDrive\EUC Syd\test\Pong-sound\data\Pong.mp3");
+  }
+  catch (Exception e)
+  {
+    println("a bad thing happened");
+  }
 }
+
+
+
 
 float Xball = 500;
 float Yball = 400;
@@ -23,13 +32,13 @@ int count2 = 0;
 float speedx=2.5f;//Fart vandret
 float speedy=2.5f;//Fart Lodret
 
- 
+
 void draw() {//Tegner cirkel
   background(227);
   circle(Xball, Yball, 50);
   Xball=Xball+speedx;//Fart på cirklen
   Yball=Yball+speedy;
-  
+
 
   //if(Xball > width || Xball < 0) { //Bounce på vandrette vægge
   //speedx=speedx*-1;
@@ -39,12 +48,12 @@ void draw() {//Tegner cirkel
     music.play();
     speedy=speedy*-1;
   }
-  if(Xball >width-25|| Xball < 0+25){
-  reset();
-  speedx=speedx*-1;
+  if (Xball >width-25|| Xball < 0+25) {
+    reset();
+    speedx=speedx*-1;
   }
 }
-  void reset() {
-    Xball = 400;
-    Yball = 500;
-  }
+void reset() {
+  Xball = 400;
+  Yball = 500;
+}
